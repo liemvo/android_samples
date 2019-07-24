@@ -2,8 +2,8 @@ package com.vad.todovad.data.db
 
 import com.vad.todovad.data.model.Category
 
-interface iCategoryDatabase {
+interface CategoryInterface {
     fun addCategory(category: Category)
     fun updateCategory(category: Category)
-    fun getAllCategory(): List<Category>
+    fun getAllCategories(): List<Category>
 }
