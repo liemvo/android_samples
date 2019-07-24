@@ -1,22 +1,23 @@
 package com.vad.todovad.data.repository
 
 import com.vad.todovad.app.replace
+import com.vad.todovad.data.db.CategoryInterface
+import com.vad.todovad.data.db.TaskInterface
 import com.vad.todovad.data.db.TodoPreferenceManager.getCategories
 import com.vad.todovad.data.db.TodoPreferenceManager.getTasks
 import com.vad.todovad.data.db.TodoPreferenceManager.saveCategories
 import com.vad.todovad.data.db.TodoPreferenceManager.saveTasks
-import com.vad.todovad.data.db.CategoryInterface
-import com.vad.todovad.data.db.TaskInterface
 import com.vad.todovad.data.model.Category
 import com.vad.todovad.data.model.Task
+import com.vad.todovad.data.model.TaskStatus
 
-class PreferenceRepository: CategoryInterface, TaskInterface {
+class PreferenceRepository : CategoryInterface, TaskInterface {
     private val categories = mutableListOf<Category>()
     private val tasks = mutableListOf<Task>()
     
     init {
         getCategories()?.let { categories.addAll(it) }
-        getTasks()?.let { tasks.addAll(it)}
+        getTasks()?.let { tasks.addAll(it) }
     }
     
     override fun addCategory(category: Category) {
@@ -31,13 +32,9 @@ class PreferenceRepository: CategoryInterface, TaskInterface {
         saveCategories(categories)
     }
     
-    override fun getAllCategories(): List<Category> {
-        return categories
-    }
+    override fun getAllCategories() = categories
     
-    override fun getAllTasks(): List<Task> {
-        return tasks
-    }
+    override fun getAllTasks() = tasks
     
     override fun addTask(task: Task) {
         tasks.add(task)
@@ -58,4 +55,8 @@ class PreferenceRepository: CategoryInterface, TaskInterface {
             saveTasks(tasks)
         }
     }
+    
+    fun finishTask(task: Task) = updateTask(task.copy(status = TaskStatus.COMPLETE))
+    fun getFavoriteTasks() = tasks.filter { it.isFavorite }.toList()
+    fun getHiddenTasks() = tasks.filter { it.isHidden }.toList()
 }

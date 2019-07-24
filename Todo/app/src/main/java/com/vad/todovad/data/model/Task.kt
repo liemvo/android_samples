@@ -14,5 +14,7 @@ data class Task(
     val startedDate: Date,
     val category: Category,
     val priority: Priorty,
-    val isHidden: Boolean = false
+    val isHidden: Boolean = false,
+    val isFavorite: Boolean = false,
+    val status: TaskStatus
 ) : Parcelable
