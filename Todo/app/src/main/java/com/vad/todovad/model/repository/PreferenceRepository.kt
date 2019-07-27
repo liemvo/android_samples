@@ -1,17 +1,15 @@
-package com.vad.todovad.data.repository
+package com.vad.todovad.model.repository
 
-import com.vad.todovad.app.replace
-import com.vad.todovad.data.db.CategoryInterface
-import com.vad.todovad.data.db.TaskInterface
-import com.vad.todovad.data.db.TodoPreferenceManager.getCategories
-import com.vad.todovad.data.db.TodoPreferenceManager.getTasks
-import com.vad.todovad.data.db.TodoPreferenceManager.saveCategories
-import com.vad.todovad.data.db.TodoPreferenceManager.saveTasks
-import com.vad.todovad.data.model.Category
-import com.vad.todovad.data.model.Task
-import com.vad.todovad.data.model.TaskStatus
+import com.vad.todovad.common.replace
+import com.vad.todovad.model.Category
+import com.vad.todovad.model.Task
+import com.vad.todovad.model.TaskStatus
+import com.vad.todovad.model.database.TodoPreferenceManager.getCategories
+import com.vad.todovad.model.database.TodoPreferenceManager.getTasks
+import com.vad.todovad.model.database.TodoPreferenceManager.saveCategories
+import com.vad.todovad.model.database.TodoPreferenceManager.saveTasks
 
-class PreferenceRepository : CategoryInterface, TaskInterface {
+class PreferenceRepository : RepositoryInterface {
     private val categories = mutableListOf<Category>()
     private val tasks = mutableListOf<Task>()
     

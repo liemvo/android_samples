@@ -1,4 +1,4 @@
-package com.vad.todovad.data.model
+package com.vad.todovad.model
 
 enum class TaskStatus(val value: String) {
     COMPLETE("Complete"),

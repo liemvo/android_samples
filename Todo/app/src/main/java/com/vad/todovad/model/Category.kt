@@ -1,4 +1,4 @@
-package com.vad.todovad.data.model
+package com.vad.todovad.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
