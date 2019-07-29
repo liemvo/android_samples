@@ -54,6 +54,12 @@ class PreferenceRepository : RepositoryInterface {
         }
     }
     
+    override fun clearTasks() {
+        tasks.forEach {
+            deleteTask(it.id)
+        }
+    }
+    
     fun finishTask(task: Task) = updateTask(task.copy(status = TaskStatus.COMPLETE))
     fun getFavoriteTasks() = tasks.filter { it.isFavorite }.toList()
     fun getHiddenTasks() = tasks.filter { it.isHidden }.toList()

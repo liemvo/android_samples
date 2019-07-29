@@ -12,4 +12,5 @@ interface RepositoryInterface {
     fun addTask(task: Task)
     fun updateTask(task: Task)
     fun deleteTask(taskId: String)
+    fun clearTasks(): Boolean
 }
